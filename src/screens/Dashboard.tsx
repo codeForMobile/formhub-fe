@@ -1,4 +1,5 @@
 import { gql, useQuery } from '@apollo/client'
+import { DataGrid, GridColDef } from '@mui/x-data-grid'
 
 const Dashboard = () => {
   const { data, loading } = useQuery(gql`
@@ -10,10 +11,22 @@ const Dashboard = () => {
         }
     }
   `)
-
+  
+  const columns: GridColDef[] = [
+    { field: 'id', headerName: 'id', width: 300},
+    { field: 'submittedAt', headerName: 'submittedAt', width:200},
+  ];
+  
   if (loading) return <div>Loading...</div>
   return (
-    <div>{JSON.stringify(data)}</div>
+   // original version 
+   //<div>{JSON.stringify(data)}</div>
+   <div style={{ height: 300, width: '100%' }}>
+    <DataGrid 
+        rows={data.submissions} 
+        columns={columns} 
+    />
+    </div>
   )
 }
 
