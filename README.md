@@ -8,12 +8,12 @@ Its a spa, ui containing mui datagrid (for simplicity).
 It produces the data in tabular format which was submitted by users while filling "contact us" form(s). Each row represents
 a submission by user.
 
-To replicate the user's submissions, button `Generate Submissions` creats 10 (currently hardcoded this number) submissions.
+To replicate the user's submissions, button `Generate Submissions` creates 10 (currently hardcoded this number) submissions.
 
 ## How
 
 Clikcing the button triggers queue (bullmq) to trigger jobs containing fake data (implemented by faker lib)
-to Redis which are ultimately saves the data in a
+to Redis which ultimately is saved in a
 postgres db running in docker container.
 
 ## Scripts
